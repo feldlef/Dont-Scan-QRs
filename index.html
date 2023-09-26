@@ -8,40 +8,37 @@
         body {
             font-family: 'Courier New', Courier, monospace;
             text-align: center;
-            margin-top: 100px;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background-color: black;
             color: #33FF33;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        #cursor {
-            font-size: 3em;
-            animation: blink 0.5s step-end infinite;
-            display: inline-block;
-        }
-
-        iframe {
+        img {
             display: none;
+            margin-top: 20px;  /* Space between the text and the GIF */
         }
     </style>
 </head>
 <body>
-    <div id="cursor">_</div>
-    
-    <!-- Embed the "Rickroll" video -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen></iframe>
+    <div id="infectedText">Infected_</div>
+
+    <img src="https://media.tenor.com/SSY2V0RrU3IAAAAd/rick-roll-rick-rolled.gif" alt="Rickroll" width="560" height="315">
+    <audio id="rickrollAudio" src="https://github.com/feldlef/Dont-Scan-QRs/raw/main/Rick%20Roll%20Sound%20Effect.mp3" preload="auto"></audio>
 
     <script>
         setTimeout(() => {
-            const cursorDiv = document.getElementById('cursor');
-            const videoIframe = document.querySelector('iframe');
+            const infectedDiv = document.getElementById('infectedText');
+            const rickGif = document.querySelector('img');
+            const rickAudio = document.getElementById('rickrollAudio');
 
-            cursorDiv.style.display = 'none'; // Hide the cursor
-            videoIframe.style.display = 'block'; // Show the video
+            infectedDiv.textContent = 'Infected'; // Remove the cursor
+            rickGif.style.display = 'block'; // Show the GIF
+            rickAudio.play(); // Play the audio
         }, 3000);
     </script>
 </body>

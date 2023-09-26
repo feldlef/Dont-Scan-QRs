@@ -12,30 +12,28 @@
             padding: 0;
             background-color: black;
             color: #33FF33;
-            position: relative;
         }
 
         #terminal {
             width: 70%;
+            margin-top: 5%;
             text-align: center;
-            position: absolute;
-            top: 5%;
-            left: 50%;
-            transform: translateX(-50%);
         }
 
         img {
             display: none;
-            position: absolute;
-            top: 70%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            margin-top: 3em; /* Creates space between the text and the GIF */
+            max-width: 100%; /* Ensures the GIF fits within the screen width */
+        }
+
+        audio {
+            display: none; /* Ensures the audio element isn't visually shown on the page */
         }
     </style>
 </head>
 <body>
     <div id="terminal"></div>
-    <img src="https://github.com/feldlef/Dont-Scan-QRs/blob/main/rick-roll-rick-rolled.gif?raw=true" alt="Rickroll" width="560" height="315">
+    <img src="https://github.com/feldlef/Dont-Scan-QRs/blob/main/rick-roll-rick-rolled.gif?raw=true" alt="Rickroll">
     <audio id="rickrollAudio" src="https://github.com/feldlef/Dont-Scan-QRs/raw/main/Rick%20Roll%20Sound%20Effect.mp3" preload="auto" autoplay muted></audio>
 
     <script>

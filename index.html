@@ -5,29 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>System Analysis</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            background-color: black;
-            color: lime;
-            font-family: 'Courier New', Courier, monospace;
-            text-align: center;
-            overflow: hidden;
-        }
-        #terminal-text {
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        #rick-gif {
-            display: none;
-            position: absolute;
-            top: 70%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60%;
-        }
-    </style>
+   <style>
+    body {
+        background-color: black;
+        color: lime;
+        font-family: 'Courier New', Courier, monospace;
+        text-align: center;
+        overflow: hidden;
+        font-size: 16px; /* Adjust the font size if necessary */
+    }
+    #terminal-text {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 90%; /* Increase the width if necessary */
+        white-space: nowrap; /* This will prevent wrapping */
+        overflow-x: auto; /* This will allow horizontal scrolling if a line is too long */
+    }
+    #rick-gif {
+        display: none;
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+    }
+</style>
+
 </head>
 <body>
     <div id="terminal-text"></div>

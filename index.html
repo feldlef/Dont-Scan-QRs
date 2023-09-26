@@ -35,47 +35,41 @@
 
     <audio id="rick-audio" src="https://github.com/feldlef/Dont-Scan-QRs/raw/main/Rick%20Roll%20Sound%20Effect.mp3"></audio>
 
-    <script>
-        const terminalElement = document.getElementById('terminal-text');
-        const rickAudio = document.getElementById('rick-audio');
-        const rickGif = document.getElementById('rick-gif');
+  <script>
+    const terminalElement = document.getElementById('terminal-text');
+    const rickAudio = document.getElementById('rick-audio');
+    const rickGif = document.getElementById('rick-gif');
 
-        const terminalLines = [
-            "Launching system analysis...",
-            "Enumerating connected devices...",
-            "Checking system integrity...",
-            "Validating software configurations...",
-            "Detected Location: Sweden...",
-            "Querying cloud services...",
-            "Verifying user data protection...",
-            "Establishing secure connection...",
-            "Preparing report..."
-        ];
+    const terminalLines = [
+        "Launching system analysis...",
+        "Enumerating connected devices...",
+        "Checking system integrity...",
+        "Validating software configurations...",
+        "Detected Location: Sweden...",
+        "Querying cloud services...",
+        "Verifying user data protection...",
+        "Establishing secure connection...",
+        "Preparing report..."
+    ];
 
-        let index = 0;
-        let line = '';
+    let index = 0;
 
-        const typeLine = () => {
-            if (line.length < terminalLines[index].length) {
-                line += terminalLines[index][line.length];
-                terminalElement.textContent = line;
-                setTimeout(typeLine, 50);
-            } else {
-                index++;
-                if (index < terminalLines.length) {
-                    line = '';
-                    terminalElement.innerHTML += '<br>';
-                    setTimeout(typeLine, 500);
-                } else {
-                    setTimeout(() => {
-                        rickGif.style.display = 'block';
-                        rickAudio.play();
-                    }, 1000);
-                }
-            }
-        };
+    const typeLine = () => {
+        if (index < terminalLines.length) {
+            let line = terminalLines[index];
+            terminalElement.innerHTML += line + '<br>';
+            index++;
+            setTimeout(typeLine, 500);
+        } else {
+            setTimeout(() => {
+                rickGif.style.display = 'block';
+                rickAudio.play();
+            }, 1000);
+        }
+    };
 
-        setTimeout(typeLine, 500);
-    </script>
+    setTimeout(typeLine, 500);
+</script>
+
 </body>
 </html>

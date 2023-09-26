@@ -18,15 +18,9 @@
             color: #33FF33;
         }
 
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        #infectedText:after {
-            content: '_';  /* This adds the underscore */
-            animation: blink 0.5s infinite;  /* This makes it blink */
+        #terminal {
+            width: 70%;
+            text-align: left;
         }
 
         img {
@@ -36,21 +30,40 @@
     </style>
 </head>
 <body>
-    <div id="infectedText">Infected</div>
+    <div id="terminal"></div>
     <img src="https://github.com/feldlef/Dont-Scan-QRs/blob/main/rick-roll-rick-rolled.gif?raw=true" alt="Rickroll" width="560" height="315">
     <audio id="rickrollAudio" src="https://github.com/feldlef/Dont-Scan-QRs/raw/main/Rick%20Roll%20Sound%20Effect.mp3" preload="auto" autoplay muted></audio>
 
     <script>
-        setTimeout(() => {
-            const infectedDiv = document.getElementById('infectedText');
-            const rickGif = document.querySelector('img');
-            const rickAudio = document.getElementById('rickrollAudio');
+        const terminalDiv = document.getElementById('terminal');
+        const rickGif = document.querySelector('img');
+        const rickAudio = document.getElementById('rickrollAudio');
+        
+        const terminalLines = [
+            "Initiating script...",
+            "Initialized.",
+            "Tracking started...",
+            "Location: Sweden...",
+            "Running infection parameters..."
+        ];
 
-            infectedDiv.textContent = 'Infected'; // Remove the cursor
-            rickGif.style.display = 'block'; // Show the GIF
-            rickAudio.muted = false;  // Unmute the audio
-            rickAudio.play(); 
-        }, 2000);
+        let index = 0;
+
+        const typeLine = () => {
+            if (index < terminalLines.length) {
+                terminalDiv.innerHTML += terminalLines[index] + '<br>';
+                index++;
+                setTimeout(typeLine, 500);
+            } else {
+                setTimeout(() => {
+                    rickGif.style.display = 'block'; // Show the GIF
+                    rickAudio.muted = false;  // Unmute the audio
+                    rickAudio.play();
+                }, 1000);
+            }
+        };
+
+        typeLine(); // Start typing
     </script>
 </body>
 </html>

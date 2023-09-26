@@ -6,32 +6,43 @@
     <title>Warning!</title>
     <style>
         body {
-            font-family: 'Courier New', Courier, monospace; /* Use a monospace font for the terminal look */
+            font-family: 'Courier New', Courier, monospace;
             text-align: center;
             margin-top: 100px;
-            background-color: black; /* Set background to black */
-            color: #33FF33; /* Terminal green color */
+            background-color: black;
+            color: #33FF33;
         }
 
-        #infectedText {
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        #cursor {
             font-size: 3em;
-            font-weight: bold;
+            animation: blink 0.5s step-end infinite;
+            display: inline-block;
         }
 
         iframe {
-            border: 1px solid #33FF33; /* Give a green border to the iframe to match the theme */
-            background-color: black; /* Ensure iframe background matches the page */
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div id="infectedText">Infected</div>
-
+    <div id="cursor">_</div>
+    
     <!-- Embed the "Rickroll" video -->
     <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allowfullscreen></iframe>
 
     <script>
-        // JavaScript placeholder for potential future functionality
+        setTimeout(() => {
+            const cursorDiv = document.getElementById('cursor');
+            const videoIframe = document.querySelector('iframe');
+
+            cursorDiv.style.display = 'none'; // Hide the cursor
+            videoIframe.style.display = 'block'; // Show the video
+        }, 3000);
     </script>
 </body>
 </html>

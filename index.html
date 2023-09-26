@@ -3,69 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warning!</title>
+    <title>System Analysis</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
+            background-color: black;
+            color: lime;
             font-family: 'Courier New', Courier, monospace;
             text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: black;
-            color: #33FF33;
+            overflow: hidden;
         }
-
-        #terminal {
-            width: 70%;
-            margin-top: 5%;
-            text-align: center;
+        #terminal-text {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
-
-        img {
+        #rick-gif {
             display: none;
-            margin-top: 3em; /* Creates space between the text and the GIF */
-            max-width: 100%; /* Ensures the GIF fits within the screen width */
-        }
-
-        audio {
-            display: none; /* Ensures the audio element isn't visually shown on the page */
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
         }
     </style>
 </head>
 <body>
-    <div id="terminal"></div>
-    <img src="https://github.com/feldlef/Dont-Scan-QRs/blob/main/rick-roll-rick-rolled.gif?raw=true" alt="Rickroll">
-    <audio id="rickrollAudio" src="https://github.com/feldlef/Dont-Scan-QRs/raw/main/Rick%20Roll%20Sound%20Effect.mp3" preload="auto" autoplay muted></audio>
+    <div id="terminal-text"></div>
+    <img id="rick-gif" src="https://github.com/feldlef/Dont-Scan-QRs/blob/main/rick-roll-rick-rolled.gif?raw=true" alt="Rickroll">
+
+    <audio id="rick-audio" src="https://github.com/feldlef/Dont-Scan-QRs/raw/main/Rick%20Roll%20Sound%20Effect.mp3"></audio>
 
     <script>
-        const terminalDiv = document.getElementById('terminal');
-        const rickGif = document.querySelector('img');
-        const rickAudio = document.getElementById('rickrollAudio');
-        
+        const terminalElement = document.getElementById('terminal-text');
+        const rickAudio = document.getElementById('rick-audio');
+        const rickGif = document.getElementById('rick-gif');
+
         const terminalLines = [
-            "Initiating script...",
-            "Initialized.",
-            "Tracking started...",
-            "Location: Sweden...",
-            "Running infection parameters..."
+            "Launching system analysis...",
+            "Enumerating connected devices...",
+            "Checking system integrity...",
+            "Validating software configurations...",
+            "Detected Location: Sweden...",
+            "Querying cloud services...",
+            "Verifying user data protection...",
+            "Establishing secure connection...",
+            "Preparing report..."
         ];
 
         let index = 0;
+        let line = '';
 
         const typeLine = () => {
-            if (index < terminalLines.length) {
-                terminalDiv.innerHTML += terminalLines[index] + '<br>';
-                index++;
-                setTimeout(typeLine, 500);
+            if (line.length < terminalLines[index].length) {
+                line += terminalLines[index][line.length];
+                terminalElement.textContent = line;
+                setTimeout(typeLine, 50);
             } else {
-                setTimeout(() => {
-                    rickGif.style.display = 'block'; // Show the GIF
-                    rickAudio.muted = false;  // Unmute the audio
-                    rickAudio.play();
-                }, 1000);
+                index++;
+                if (index < terminalLines.length) {
+                    line = '';
+                    terminalElement.innerHTML += '<br>';
+                    setTimeout(typeLine, 500);
+                } else {
+                    setTimeout(() => {
+                        rickGif.style.display = 'block';
+                        rickAudio.play();
+                    }, 1000);
+                }
             }
         };
 
-        typeLine(); // Start typing
+        setTimeout(typeLine, 500);
     </script>
 </body>
 </html>

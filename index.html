@@ -18,17 +18,27 @@
             color: #33FF33;
         }
 
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        #infectedText:after {
+            content: '_';  /* This adds the underscore */
+            animation: blink 0.5s infinite;  /* This makes it blink */
+        }
+
         img {
             display: none;
-            margin-top: 20px;  /* Space between the text and the GIF */
+            margin-top: 3rem;  /* 3 lines of spacing */
         }
     </style>
 </head>
 <body>
-    <div id="infectedText">Infected_</div>
-
-    <img src="https://media.tenor.com/SSY2V0RrU3IAAAAd/rick-roll-rick-rolled.gif" alt="Rickroll" width="560" height="315">
-    <audio id="rickrollAudio" src="https://github.com/feldlef/Dont-Scan-QRs/raw/main/Rick%20Roll%20Sound%20Effect.mp3" preload="auto"></audio>
+    <div id="infectedText">Infected</div>
+    <img src="https://github.com/feldlef/Dont-Scan-QRs/blob/main/rick-roll-rick-rolled.gif?raw=true" alt="Rickroll" width="560" height="315">
+    <audio id="rickrollAudio" src="https://github.com/feldlef/Dont-Scan-QRs/raw/main/Rick%20Roll%20Sound%20Effect.mp3" preload="auto" autoplay muted></audio>
 
     <script>
         setTimeout(() => {
@@ -38,8 +48,9 @@
 
             infectedDiv.textContent = 'Infected'; // Remove the cursor
             rickGif.style.display = 'block'; // Show the GIF
-            rickAudio.play(); // Play the audio
-        }, 3000);
+            rickAudio.muted = false;  // Unmute the audio
+            rickAudio.play(); 
+        }, 2000);
     </script>
 </body>
 </html>
